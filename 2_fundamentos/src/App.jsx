@@ -1,5 +1,7 @@
 import './App.css'
 import BomDia from './components/BomDia'
+import BotaoAzul from './components/BotaoAzul'
+import BotaoEstilizado from './components/BotaoEstilizado'
 import Cachorro from './components/Cachorro'
 import Counter from './components/Counter'
 import Descricao from './components/Descricao'
@@ -31,6 +33,8 @@ const App = () => {
     <LoginButton loggedIn={false}/>
     <Warning warning={true}/>
     <NumberList numbers={[1,2,3,4,5,6,7]}/>
+    <BotaoEstilizado />
+    <BotaoAzul />
     </>
   )
 }
