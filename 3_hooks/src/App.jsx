@@ -7,6 +7,7 @@ import { MeuContextoProvider } from './contexts/MeuContexto'
 import Contador from './components/Contador/Contador'
 import DisplayWindowSize from './components/DisplayWindowSize/DisplayWindowSize'
 import Container from './components/Container/Container'
+import PerfilDeUsurario from './components/PerfilDeUsurario/PerfilDeUsurario'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <p>Eu tambem</p>
         <Contador />
       </Container>
+      <PerfilDeUsurario userId={1}/>
     </>
   )
 }
