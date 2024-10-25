@@ -10,6 +10,9 @@ import Container from './components/Container/Container'
 import PerfilDeUsurario from './components/PerfilDeUsurario/PerfilDeUsurario'
 import CalculoPesado from './components/CalculoPesado/CalculoPesado'
 import ContadorCallback from './components/ContadorCallback/ContadorCallback'
+import SincronizarDados from './components/SincronizarDados/SincronizarDados'
+import CalPesadoEX from './components/CalPesadoEX/CalPesadoEX'
+import OnlineStatusIndicator from './components/OnlineStatusIndicator/OnlineStatusIndicator'
 
 function App() {
 
@@ -31,6 +34,11 @@ function App() {
       <PerfilDeUsurario userId={1}/>
       <CalculoPesado />
       <ContadorCallback />
+
+      {/* Ex */}
+      <SincronizarDados />
+      <CalPesadoEX num={10}/>
+      <OnlineStatusIndicator />
     </>
   )
 }
