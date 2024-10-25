@@ -25,6 +25,10 @@ li {
   align-items: center;
 }
 
+li span {
+  cursor: pointer;
+}
+
 input[type="text"] {
   padding: 10px;
   border: 1px solid #ddd;
