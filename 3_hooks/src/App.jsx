@@ -8,6 +8,8 @@ import Contador from './components/Contador/Contador'
 import DisplayWindowSize from './components/DisplayWindowSize/DisplayWindowSize'
 import Container from './components/Container/Container'
 import PerfilDeUsurario from './components/PerfilDeUsurario/PerfilDeUsurario'
+import CalculoPesado from './components/CalculoPesado/CalculoPesado'
+import ContadorCallback from './components/ContadorCallback/ContadorCallback'
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
         <Contador />
       </Container>
       <PerfilDeUsurario userId={1}/>
+      <CalculoPesado />
+      <ContadorCallback />
     </>
   )
 }
