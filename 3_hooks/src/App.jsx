@@ -6,6 +6,7 @@ import ValorDoContexto from './components/ValorDoContexto/ValorDoContexto'
 import { MeuContextoProvider } from './contexts/MeuContexto'
 import Contador from './components/Contador/Contador'
 import DisplayWindowSize from './components/DisplayWindowSize/DisplayWindowSize'
+import Container from './components/Container/Container'
 
 function App() {
 
@@ -19,6 +20,11 @@ function App() {
       </MeuContextoProvider>
       <Contador />
       <DisplayWindowSize />
+      <Container>
+        <h1>Estou em uma Div</h1>
+        <p>Eu tambem</p>
+        <Contador />
+      </Container>
     </>
   )
 }
