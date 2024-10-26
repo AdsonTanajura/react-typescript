@@ -1,6 +1,6 @@
 import './style.css';
 
-import { Link } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 
 const Header = () => {
   return (
@@ -18,6 +18,11 @@ const Header = () => {
                         </li>
                         <li>
                             <Link to={'/contact'}>Contato</Link>
+                        </li>
+                        <li>
+                            <NavLink className={({isActivi}) => (isActivi ? "active-link" : "")} to={'/contact'}>
+                                Contato LavLink
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
