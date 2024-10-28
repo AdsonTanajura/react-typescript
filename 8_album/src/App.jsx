@@ -8,16 +8,18 @@ import SearchBar from './components/SearchBar/SearchBar';
 function App() {
   const [query, setQuery] = useState('');
   const [categoria, setCategoria] = useState('');
+  const [fotos, setFotos] = useState([]);
 
   const fetchData = async ({ query, categoria }) => {
     const apiKey = import.meta.env.VITE_UNSPLASH_API_KEY;
     const response = await axio.get('https://api.unsplash.com/photos/random', {
       params: {
         client_id: apiKey,
+        count: 10,
       },
     });
-
-    console.log(response);
+    setFotos(response.data);
+    console.log(fotos);
   };
 
   useEffect(() => {
@@ -26,7 +28,7 @@ function App() {
   return (
     <div className="container">
       <SearchBar />
-      <FotoList />
+      <FotoList fotos={fotos} />
       <FotoApliada />
     </div>
   );

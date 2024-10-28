@@ -1,10 +1,13 @@
+import Foto from '../Foto/Foto';
 
-const FotoList = () => {
+const FotoList = ({ fotos }) => {
   return (
-    <div>
-      
+    <div className="album">
+      {fotos.map((foto) => (
+        <Foto key={foto.id} dados={foto} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default FotoList
+export default FotoList;
