@@ -1,4 +1,4 @@
-const SearchBar = () => {
+const SearchBar = ({ setQuery, setCategoria, setActivateSearch }) => {
   const categorias = [
     'Natureza',
     'Pessoas',
@@ -8,9 +8,18 @@ const SearchBar = () => {
   ];
   return (
     <div className="search-bar">
-      <input type="text" placeholder="Pesquisar fotos..." />
-      <button>Pesquisa</button>
-      <select>
+      <input
+        type="text"
+        placeholder="Pesquisar fotos..."
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <button onClick={() => setActivateSearch(true)}>Pesquisa</button>
+      <select
+        onChange={(e) => {
+          setCategoria(e.target.value);
+          setActivateSearch(true);
+        }}
+      >
         {categorias.map((categoria) => (
           <option key={categoria} value={categoria}>
             {categoria}
