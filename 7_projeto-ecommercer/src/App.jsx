@@ -7,10 +7,10 @@ import Thanks from './pages/Thanks/Thanks';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/ReactToastify.css';
 const App = () => {
-  const [cartItem, setCartItem] = useState([]);
+  const [cartItem, setCartItems] = useState([]);
 
   const handleAddCart = (product, quantity) => {
-    setCartItem((prevItems) => {
+    setCartItems((prevItems) => {
       const itemExists = prevItems.find((item) => item.id === product.id);
       if (itemExists) {
         toast.info(`Quantidade do item atualizado ${product.name}`);
@@ -29,7 +29,7 @@ const App = () => {
 
   const handleUpdateCart = (product, quantity) => {
     toast.info(`Quantidade do item atualizado ${product.name}`);
-    setCartItem((prevItems) => {
+    setCartItems((prevItems) => {
       return prevItems.map((item) =>
         item.id === product.id ? { ...item, quantity: quantity } : item
       );
@@ -38,7 +38,7 @@ const App = () => {
 
   const handleRemoveFromCart = (product) => {
     toast.error(`${product.name} foi removido com sucesso!`);
-    setCartItem((prevItems) =>
+    setCartItems((prevItems) =>
       prevItems.filter((item) => item.id !== product.id)
     );
   };
@@ -59,6 +59,15 @@ const App = () => {
                 cartItems={cartItem}
                 onUpdateCart={handleUpdateCart}
                 onRemoveFromCart={handleRemoveFromCart}
+                setCartItems={setCartItems}
+                onCheckout={() => {
+                  if (cartItem.length > 0) {
+                    toast.success('Compra Finalizada com sucesso!');
+                    setCartItems([]);
+                  } else {
+                    toast.error('Seu carrinho esta vazio');
+                  }
+                }}
               />
             }
           />

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import productData from '../../data/products_mock.json';
 import Product from '../../components/Product/Product';
 const Catalog = ({ onAddToCart }) => {
