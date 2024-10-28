@@ -1,6 +1,11 @@
-const Foto = ({ dados }) => {
+const Foto = ({ dados, setFotoAmpliada }) => {
   return (
-    <div className="foto">
+    <div
+      className="foto"
+      onClick={() => {
+        setFotoAmpliada(dados);
+      }}
+    >
       {dados && dados.urls && dados.urls.small ? (
         <img src={dados.urls.small} alt={dados.alt_description || 'Imagem'} />
       ) : (

@@ -1,10 +1,14 @@
-
-const FotoApliada = () => {
+const FotoApliada = ({ foto, setFotoAmpliada }) => {
   return (
-    <div>
-      
+    <div
+      className="foto-ampliada-backdrop"
+      onClick={() => setFotoAmpliada(null)}
+    >
+      <div className="foto-ampliada-container">
+        <img src={foto.urls.regular} alt={foto.alt_description} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default FotoApliada
+export default FotoApliada;
