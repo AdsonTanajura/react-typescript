@@ -1,4 +1,6 @@
-const Cart = ({ cartItems = [] }) => {
+import CartItem from '../../components/CartItem/CartItem';
+
+const Cart = ({ cartItems = [], onUpdateCart }) => {
   console.log(cartItems);
   return (
     <div>
@@ -8,7 +10,7 @@ const Cart = ({ cartItems = [] }) => {
       ) : (
         <>
           {cartItems.map((item) => (
-            <p key={item.id}>{item.name}</p>
+            <CartItem key={item.id} item={item} onUpdateCart={onUpdateCart} />
           ))}
         </>
       )}
