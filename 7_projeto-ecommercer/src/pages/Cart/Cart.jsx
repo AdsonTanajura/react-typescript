@@ -1,7 +1,10 @@
 import CartItem from '../../components/CartItem/CartItem';
 
-const Cart = ({ cartItems = [], onUpdateCart }) => {
-  console.log(cartItems);
+const Cart = ({ cartItems = [], onUpdateCart, onRemoveFromCart }) => {
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
   return (
     <div>
       <h1>Carrinho</h1>
@@ -10,8 +13,16 @@ const Cart = ({ cartItems = [], onUpdateCart }) => {
       ) : (
         <>
           {cartItems.map((item) => (
-            <CartItem key={item.id} item={item} onUpdateCart={onUpdateCart} />
+            <CartItem
+              key={item.id}
+              item={item}
+              onUpdateCart={onUpdateCart}
+              onRemoveFromCart={onRemoveFromCart}
+            />
           ))}
+          <div className="total">
+            <p>Total ${totalPrice}</p>
+          </div>
         </>
       )}
     </div>

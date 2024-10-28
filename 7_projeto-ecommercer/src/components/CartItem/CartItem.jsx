@@ -1,5 +1,4 @@
-const CartItem = ({ item, onUpdateCart }) => {
-  console.log('onUpdateCart:', onUpdateCart); // Verifique se está definido
+const CartItem = ({ item, onUpdateCart, onRemoveFromCart }) => {
   return (
     <div className="cart-item">
       <h3>{item.name}</h3>
@@ -10,7 +9,13 @@ const CartItem = ({ item, onUpdateCart }) => {
           value={item.quantity}
           onChange={(e) => onUpdateCart(item, parseInt(e.target.value))}
         />
-        <button>Remover</button>
+        <button
+          onClick={() => {
+            onRemoveFromCart(item);
+          }}
+        >
+          Remover
+        </button>
       </div>
     </div>
   );
