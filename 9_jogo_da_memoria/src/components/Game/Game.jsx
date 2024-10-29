@@ -18,7 +18,7 @@ const generateCards = () => {
   }));
   const duplicatedCards = cards
     .concat([...cards])
-    .map((card, index) => ({ ...card, index }));
+    .map((card, index) => ({ ...card, id: index }));
 
   return shuffleArray(duplicatedCards);
 };
@@ -30,11 +30,39 @@ const Game = () => {
   const [flippedCards, setFlippedCards] = useState([]);
   const [chances, setChances] = useState(6);
 
+  const handleCardClick = (clickCard) => {
+    if (chances === 0) return;
+    if (flippedCards.length === 2) return;
+    const newCards = cards.map((card) => {
+      return card.id === clickCard.id ? { ...card, isFlipped: true } : card;
+    });
+
+    setCards(newCards);
+
+    setFlippedCards([...flippedCards, clickCard]);
+
+    if (flippedCards.length === 1) {
+      setTimeout(() => {
+        const [firstCard] = flippedCards;
+        if (firstCard.value !== clickCard.value) {
+          const resetCards = cards.map((card) => {
+            return card.id === firstCard.id || clickCard.id
+              ? { ...card, isFlipped: false }
+              : card;
+          });
+          setCards(resetCards);
+          setChances((prev) => prev - 1);
+        }
+        setFlippedCards([]);
+      }, 600);
+    }
+  };
+
   const result = cards.filter((card) => card.isFlipped).length;
 
   return (
     <div className="game">
-      <Board cards={cards} />
+      <Board cards={cards} onCardLick={handleCardClick} />
       {chances === 0 ? (
         <p>Suas tentativas acabaram</p>
       ) : result === cards.length ? (

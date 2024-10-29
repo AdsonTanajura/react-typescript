@@ -1,7 +1,11 @@
-const Card = ({ card }) => {
+const Card = ({ card, onLick }) => {
+  console.log(card);
   return (
-    <div className={`card ${card.isFlipper ? 'flipped' : ''}`}>
-      {card.isFlipper ? card.value : '?'}
+    <div
+      className={`card ${card.isFlipped ? 'flipped' : ''}`}
+      onClick={() => onLick(card)}
+    >
+      {card.isFlipped ? card.value : '?'}
     </div>
   );
 };
