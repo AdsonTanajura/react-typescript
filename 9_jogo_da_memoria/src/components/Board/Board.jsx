@@ -1,9 +1,11 @@
 import Card from '../Card/Card';
 
-const Board = () => {
+const Board = ({ cards }) => {
   return (
     <div className="bord">
-      <Card />
+      {cards.map((card) => (
+        <Card key={card.id} card={card} />
+      ))}
     </div>
   );
 };
