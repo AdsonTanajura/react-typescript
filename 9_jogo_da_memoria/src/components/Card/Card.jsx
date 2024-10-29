@@ -1,7 +1,7 @@
 const Card = ({ card }) => {
   return (
     <div className={`card ${card.isFlipper ? 'flipped' : ''}`}>
-      {card.value}
+      {card.isFlipper ? card.value : '?'}
     </div>
   );
 };
