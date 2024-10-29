@@ -2,6 +2,7 @@ import BarraFerramentas from './components/BarraFerramentas/BarraFerramentas';
 import Contador from './components/Contador/Contador';
 import ContadorIntervalo from './components/ContadorIntervalo/ContadorIntervalo';
 import Counter from './components/Counter/Counter';
+import ExivirPostagems from './components/ExivirPostagems/ExivirPostagems';
 import FormularioLogin from './components/FormularioLogin/FormularioLogin';
 import Greeting from './components/Greeting/Greeting';
 import InputEx from './components/InputEx/InputEx';
@@ -28,6 +29,7 @@ function App() {
         <TemaProvider>
           <BarraFerramentas />
         </TemaProvider>
+        <ExivirPostagems />
       </div>
     </>
   );
