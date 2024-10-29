@@ -1,3 +1,4 @@
+import Contador from './components/Contador/Contador';
 import ContadorIntervalo from './components/ContadorIntervalo/ContadorIntervalo';
 import Counter from './components/Counter/Counter';
 import FormularioLogin from './components/FormularioLogin/FormularioLogin';
@@ -20,6 +21,8 @@ function App() {
         <ListaDeCompras />
 
         <InputEx />
+
+        <Contador />
       </div>
     </>
   );
