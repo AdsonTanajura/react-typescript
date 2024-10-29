@@ -28,7 +28,8 @@ generateCards();
 const Game = () => {
   const [cards, setCards] = useState(generateCards());
   const [flippedCards, setFlippedCards] = useState([]);
-  const [chances, setChances] = useState(6);
+  const playerChances = 100;
+  const [chances, setChances] = useState(playerChances);
 
   const handleCardClick = (clickCard) => {
     if (chances === 0) return;
@@ -60,6 +61,12 @@ const Game = () => {
 
   const result = cards.filter((card) => card.isFlipped).length;
 
+  const resetGame = () => {
+    setChances(playerChances);
+    setFlippedCards([]);
+    setCards(generateCards());
+  };
+
   return (
     <div className="game">
       <Board cards={cards} onCardLick={handleCardClick} />
@@ -71,7 +78,9 @@ const Game = () => {
         <p>Você possui {chances} tentativas</p>
       )}
 
-      <button className="btn">Reiniciar o jogo</button>
+      <button className="btn" onClick={resetGame}>
+        Reiniciar o jogo
+      </button>
     </div>
   );
 };
