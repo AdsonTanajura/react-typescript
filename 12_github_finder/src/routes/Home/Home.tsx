@@ -4,15 +4,21 @@ import { userProps } from '../../types/user';
 
 import User from '../../components/User/User';
 import Error from '../../components/Error/Error';
+import Loader from '../../components/Loader/Loader';
 const Home = () => {
   const [user, setUser] = useState<userProps | null>(null);
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loaderUser = async (userName: string) => {
+    setIsLoading(true);
     setError(false);
     setUser(null);
     const res = await fetch(`https://api.github.com/users/${userName}`);
     const data = await res.json();
+
+    setIsLoading(false);
+
     const { avatar_url, login, followers, following, location }: userProps =
       data;
 
@@ -35,6 +41,7 @@ const Home = () => {
   return (
     <div>
       <Search loadUser={loaderUser} />
+      {isLoading && <Loader />}
       {user && <User {...user} />}
       {error && <Error />}
     </div>
