@@ -7,12 +7,23 @@ const Home = () => {
   const loaderUser = async (userName: string) => {
     const res = await fetch(`https://api.github.com/users/${userName}`);
     const data = await res.json();
-    console.log(data);
+    const { avatar_url, login, followers, following, location }: userProps =
+      data;
+    const userData: userProps = {
+      avatar_url,
+      followers,
+      following,
+      location,
+      login,
+    };
+
+    setUser(userData);
   };
 
   return (
     <div>
       <Search loadUser={loaderUser} />
+      {user && <p>{user.login}</p>}
     </div>
   );
 };
