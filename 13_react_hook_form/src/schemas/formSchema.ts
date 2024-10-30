@@ -15,7 +15,7 @@ export const formSchema = z
     confirmpassword: z
       .string()
       .min(6, 'A confirmação precisa ter no mínimo 6 caracteres'),
-    agreed: z.boolean().refine((field) => field === true, {
+    agree: z.boolean().refine((field) => field === true, {
       message: 'Você precisa concordar com os termos.',
     }),
   })
