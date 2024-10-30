@@ -5,6 +5,7 @@ import { RepoPros } from '../../types/repo';
 import classes from './Repos.module.css ';
 import BackBtn from '../../components/BackBtn/BackBtn';
 import Loader from '../../components/Loader/Loader';
+import Repo from '../../components/Repo/Repo';
 
 const Repos = () => {
   const { username } = useParams();
@@ -36,7 +37,7 @@ const Repos = () => {
       {repos && repos.length > 0 && (
         <div>
           {repos.map((repo: RepoPros) => (
-            <p>{repo.name}</p>
+            <Repo key={repo.name} {...repo} />
           ))}
         </div>
       )}
