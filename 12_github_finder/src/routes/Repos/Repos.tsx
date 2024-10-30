@@ -8,7 +8,7 @@ import Loader from '../../components/Loader/Loader';
 
 const Repos = () => {
   const { username } = useParams();
-  const [repo, setRepo] = useState<RepoPros[] | [] | null>(null);
+  const [repos, setRepos] = useState<RepoPros[] | [] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -18,17 +18,28 @@ const Repos = () => {
       const res = await fetch(`https://api.github.com/users/${username}/repos`);
 
       const data = await res.json();
-
+      console.log(data);
       setIsLoading(false);
+      setRepos(data);
     };
 
-    loadRepos(username);
-  }, []);
+    loadRepos(username!);
+  }, [username]);
+
+  if (!repos && isLoading) return <Loader />;
 
   return (
     <div>
       <BackBtn />
-      Repos {username}
+      <h2>Explore os repositorios do usuario: {username}</h2>
+      {repos && repos.length === 0 && <p>Não tem repositorio</p>}
+      {repos && repos.length > 0 && (
+        <div>
+          {repos.map((repo: RepoPros) => (
+            <p>{repo.name}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
