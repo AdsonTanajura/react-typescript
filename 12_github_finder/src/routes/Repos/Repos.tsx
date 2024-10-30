@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { RepoPros } from '../../types/repo';
 
-import classes from './Repos.module.css ';
 import BackBtn from '../../components/BackBtn/BackBtn';
 import Loader from '../../components/Loader/Loader';
 import Repo from '../../components/Repo/Repo';
+import classes from './Repos.module.css';
 
 const Repos = () => {
   const { username } = useParams();
@@ -30,12 +30,12 @@ const Repos = () => {
   if (!repos && isLoading) return <Loader />;
 
   return (
-    <div>
+    <div className={classes.repos}>
       <BackBtn />
       <h2>Explore os repositorios do usuario: {username}</h2>
       {repos && repos.length === 0 && <p>Não tem repositorio</p>}
       {repos && repos.length > 0 && (
-        <div>
+        <div className={classes.repos_container}>
           {repos.map((repo: RepoPros) => (
             <Repo key={repo.name} {...repo} />
           ))}
